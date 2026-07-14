@@ -1,1 +1,1 @@
-Substitua os arquivos atuais do repositório por estes arquivos.
+Versão atualizada do convite digital. Substitua os arquivos atuais do repositório por estes.
