@@ -1,276 +1,51 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chá Revelação | 01 de agosto de 2026</title>
-  <meta name="description" content="Convite digital do Chá Revelação. Consulte a localização, confirme sua presença e veja as sugestões de presentes.">
-  <meta name="theme-color" content="#fff8f1">
-
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Chá Revelação | 01 de agosto de 2026">
-  <meta property="og:description" content="Você é nosso convidado para celebrar esse momento tão especial conosco.">
-  <meta property="og:image" content="convite.png">
-  <meta property="og:image:alt" content="Convite do Chá Revelação">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <style>
-    :root {
-      --cream:#fff9f2; --paper:#fffdf9; --gold:#b57f32; --gold-dark:#80551e;
-      --blue:#d8edf8; --pink:#f8dce4; --ink:#4f4239; --muted:#7f6d61;
-      --line:rgba(181,127,50,.22); --shadow:0 18px 45px rgba(93,70,48,.13);
-      --green:#4f8c61;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; color:var(--ink); font-family:Georgia,"Times New Roman",serif;
-      background:
-       radial-gradient(circle at 8% 4%,rgba(216,237,248,.8),transparent 23%),
-       radial-gradient(circle at 92% 10%,rgba(248,220,228,.8),transparent 25%),
-       linear-gradient(180deg,#fbf1e7,var(--cream) 42%,#f8eee4);
-    }
-    button,a{-webkit-tap-highlight-color:transparent}
-    .wrap{width:min(100%,760px);margin:auto;padding:12px 12px 54px}
-    .hero{padding:8px;background:rgba(255,255,255,.82);border:1px solid var(--line);
-      border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
-    .hero img{width:100%;height:auto;display:block;border-radius:21px}
-    .actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
-    .action{min-height:95px;display:flex;flex-direction:column;justify-content:center;align-items:center;
-      text-align:center;text-decoration:none;color:var(--gold-dark);background:rgba(255,255,255,.9);
-      border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 25px rgba(93,70,48,.08);
-      padding:12px 7px;font-weight:700;font-size:16px}
-    .action span{font-size:28px;margin-bottom:6px}
-    .card{margin-top:16px;background:rgba(255,255,255,.91);border:1px solid var(--line);
-      border-radius:28px;box-shadow:var(--shadow);padding:27px 21px}
-    .kicker{text-align:center;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);
-      font:700 12px Arial,sans-serif;margin-bottom:7px}
-    h2{font-weight:500;color:var(--gold-dark);text-align:center;font-size:clamp(30px,8vw,44px);margin:0}
-    .lead{font-size:17px;line-height:1.65;text-align:center;color:var(--muted);margin:13px auto 0;max-width:590px}
-    .help{text-align:center;background:linear-gradient(135deg,rgba(216,237,248,.75),rgba(248,220,228,.7))}
-    .help a,.primary{display:inline-block;margin-top:14px;padding:16px 21px;border-radius:999px;
-      text-decoration:none;background:var(--green);color:white;font:800 16px Arial,sans-serif;
-      box-shadow:0 10px 23px rgba(79,140,97,.24)}
-    .gift-section{margin-top:24px}
-    .gift-section h3{color:var(--gold-dark);font-size:19px;margin:0 0 9px;padding-bottom:8px;
-      border-bottom:1px solid var(--line)}
-    .gift{display:grid;grid-template-columns:38px 1fr auto;gap:11px;align-items:center;
-      padding:15px 0;border-bottom:1px dashed rgba(127,109,97,.2)}
-    .gift:last-child{border-bottom:0}
-    .gift-symbol{font-size:24px;text-align:center}
-    .gift-copy strong{display:block;font-size:17px;line-height:1.35}
-    .gift-copy small{display:block;color:var(--muted);font-size:13px;line-height:1.4;margin-top:3px}
-    .gift button{border:0;border-radius:999px;background:linear-gradient(135deg,var(--blue),var(--pink));
-      color:#604d42;padding:12px 13px;font:800 13px Arial,sans-serif;cursor:pointer}
-    .pix{text-align:center;margin-top:24px;padding:24px 16px;border-radius:23px;
-      background:linear-gradient(135deg,rgba(216,237,248,.65),rgba(248,220,228,.6));border:1px solid var(--line)}
-    .pix-key{font:800 27px Arial,sans-serif;letter-spacing:.03em;color:#474747;margin:10px 0}
-    .copy{border:1px solid rgba(181,127,50,.35);background:white;color:var(--gold-dark);
-      border-radius:999px;padding:13px 19px;font:800 15px Arial,sans-serif;cursor:pointer}
-    footer{text-align:center;color:var(--muted);font-style:italic;line-height:1.55;padding:25px 16px 0}
-    .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,25px);opacity:0;
-      background:#4f4239;color:white;padding:12px 16px;border-radius:999px;font:14px Arial,sans-serif;
-      transition:.25s;pointer-events:none;z-index:20;max-width:calc(100vw - 24px);text-align:center}
-    .toast.show{opacity:1;transform:translate(-50%,0)}
-    @media(max-width:610px){
-      .wrap{padding-left:9px;padding-right:9px}
-      .actions{grid-template-columns:1fr}
-      .action{min-height:76px;flex-direction:row;gap:10px;font-size:17px}
-      .action span{margin:0}
-      .card{padding:24px 16px}
-      .gift{grid-template-columns:34px 1fr}
-      .gift button{grid-column:2;justify-self:start;font-size:14px;padding:13px 15px}
-    }
-  </style>
-</head>
-<body>
-  <main class="wrap">
-    <section class="hero">
-      <img src="convite.png" alt="Convite do Chá Revelação em 01 de agosto de 2026">
-    </section>
-
-    <nav class="actions" aria-label="Ações do convite">
-      <a class="action" href="https://maps.app.goo.gl/vmqSJTyVW9QeY3hr6" target="_blank" rel="noopener"><span>📍</span>Localização</a>
-      <a class="action" href="https://wa.me/5586998474847?text=Ol%C3%A1%21%20Tudo%20bem%3F%0A%0AConfirmo%20minha%20presen%C3%A7a%20no%20Ch%C3%A1%20Revela%C3%A7%C3%A3o%20do%20dia%2001%20de%20agosto%20de%202026.%0A%0ANome%3A" target="_blank" rel="noopener"><span>✅</span>Confirmar presença</a>
-      <a class="action" href="#presentes"><span>🎁</span>Ver presentes</a>
-    </nav>
-
-    <section class="card help">
-      <div class="kicker">Para facilitar</div>
-      <h2>Precisa de ajuda?</h2>
-      <p class="lead">Se tiver qualquer dificuldade para escolher ou reservar um presente, toque no botão abaixo. A mensagem abrirá pronta no WhatsApp.</p>
-      <a href="https://wa.me/5586998474847?text=Ol%C3%A1%21%20Preciso%20de%20ajuda%20para%20escolher%20ou%20reservar%20um%20presente%20do%20Ch%C3%A1%20Revela%C3%A7%C3%A3o." target="_blank" rel="noopener">Falar conosco no WhatsApp</a>
-    </section>
-
-    <section class="card" id="presentes">
-      <div class="kicker">Com carinho</div>
-      <h2>Sugestões de presentes</h2>
-      <p class="lead">Escolha uma opção e toque em <strong>“Reservar pelo WhatsApp”</strong>. A conversa será aberta com a mensagem pronta; depois, basta tocar em <strong>Enviar</strong>.</p>
-      
-      <section class="gift-section">
-        <h3>Primeiras sugestões</h3>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">👕</div>
-            <div class="gift-copy">
-              <strong>Roupinhas em cores neutras</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Roupinhas em cores neutras')">Reservar pelo WhatsApp</button>
-          </article>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🍼</div>
-            <div class="gift-copy">
-              <strong>Mamadeira Avent 125 ml</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Mamadeira Avent 125 ml')">Reservar pelo WhatsApp</button>
-          </article>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🍼</div>
-            <div class="gift-copy">
-              <strong>Mamadeira Avent 260 ml</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Mamadeira Avent 260 ml')">Reservar pelo WhatsApp</button>
-          </article>
-        
-      </section>
-    
-      <section class="gift-section">
-        <h3>Conforto e enxoval</h3>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">👜</div>
-            <div class="gift-copy">
-              <strong>Bolsa maternidade</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Bolsa maternidade')">Reservar pelo WhatsApp</button>
-          </article>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🧸</div>
-            <div class="gift-copy">
-              <strong>Manta</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Manta')">Reservar pelo WhatsApp</button>
-          </article>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🤱</div>
-            <div class="gift-copy">
-              <strong>Almofada de amamentação</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Almofada de amamentação')">Reservar pelo WhatsApp</button>
-          </article>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🛏️</div>
-            <div class="gift-copy">
-              <strong>Kit Ninho Redutor + Almofada de Amamentação + Mosquiteiro</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Kit Ninho Redutor + Almofada de Amamentação + Mosquiteiro')">Reservar pelo WhatsApp</button>
-          </article>
-        
-      </section>
-    
-      <section class="gift-section">
-        <h3>Banho e higiene</h3>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🛁</div>
-            <div class="gift-copy">
-              <strong>Banheira pequena para bebê</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Banheira pequena para bebê')">Reservar pelo WhatsApp</button>
-          </article>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🧴</div>
-            <div class="gift-copy">
-              <strong>Kit higiene</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Kit higiene')">Reservar pelo WhatsApp</button>
-          </article>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🧺</div>
-            <div class="gift-copy">
-              <strong>Toalha com capuz</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Toalha com capuz')">Reservar pelo WhatsApp</button>
-          </article>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🌡️</div>
-            <div class="gift-copy">
-              <strong>Termômetro digital</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Termômetro digital')">Reservar pelo WhatsApp</button>
-          </article>
-        
-      </section>
-    
-      <section class="gift-section">
-        <h3>Amamentação</h3>
-        
-          <article class="gift">
-            <div class="gift-symbol" aria-hidden="true">🍼</div>
-            <div class="gift-copy">
-              <strong>Bomba tira-leite Avent</strong>
-              <small>Confirme antes para sabermos se ainda está disponível.</small>
-            </div>
-            <button type="button" onclick="reserveGift('Bomba tira-leite Avent')">Reservar pelo WhatsApp</button>
-          </article>
-        
-      </section>
-    
-
-      <div class="pix">
-        <div class="kicker">Outra forma de presentear</div>
-        <h3 style="margin:0;color:var(--gold-dark);font-size:23px">Presente via Pix</h3>
-        <div class="pix-key" id="pix">86998474847</div>
-        <button class="copy" type="button" onclick="copyPix()">Copiar chave Pix</button>
-        <p class="lead" style="font-size:14px">A sua presença é o nosso maior presente. Qualquer gesto de carinho será recebido com muita gratidão.</p>
-      </div>
-    </section>
-
-    <footer>Esperamos você para celebrar conosco este momento tão especial.</footer>
-  </main>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script>
-    function showToast(message){
-      const el=document.getElementById('toast');
-      el.textContent=message; el.classList.add('show');
-      clearTimeout(window.toastTimer);
-      window.toastTimer=setTimeout(()=>el.classList.remove('show'),2600);
-    }
-    function reserveGift(item){
-      const message=`Olá! Tudo bem?
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chá Revelação | 01 de agosto de 2026</title>
+<meta name="description" content="Convite digital do Chá Revelação. Confirme sua presença, veja a localização e reserve um presente.">
+<meta property="og:title" content="Chá Revelação | 01 de agosto de 2026">
+<meta property="og:description" content="Você é nosso convidado para celebrar esse momento tão especial conosco.">
+<meta property="og:image" content="https://lucas027.github.io/cha-revelacao/convite.png">
+<meta property="og:url" content="https://lucas027.github.io/cha-revelacao/">
+<style>
+:root{--gold:#ad7628;--ink:#4f4238;--muted:#7f6c60;--blue:#d9edf8;--pink:#f8dce5;--line:rgba(173,118,40,.23);--shadow:0 18px 45px rgba(83,61,41,.14)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Georgia,serif;background:radial-gradient(circle at 8% 5%,#dff1fa,transparent 24%),radial-gradient(circle at 92% 6%,#f9e1e8,transparent 25%),#fff8f1;overflow-x:hidden}body.lock{overflow:hidden}
+.wrap{width:min(100%,780px);margin:auto;padding:11px 10px 55px}.hero,.card{background:#fffffff0;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}.hero{padding:8px}.hero img{display:block;width:100%;border-radius:21px}
+.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin:16px 0}.action{display:flex;align-items:center;gap:12px;min-height:95px;padding:15px;border-radius:21px;background:#fffffff2;border:1px solid var(--line);text-decoration:none;color:var(--gold);font-weight:700;font-size:17px}.action b{display:block}.action small{display:block;color:var(--muted);font-size:12px;margin-top:4px;font-weight:400}.ico{font-size:30px}
+.card{margin-top:16px;padding:27px 20px}.kicker{text-align:center;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);font:700 12px Arial}h2{text-align:center;color:#89591c;font-size:clamp(31px,8vw,45px);font-weight:500;margin:6px 0}.lead{max-width:600px;margin:12px auto 0;text-align:center;color:var(--muted);font-size:17px;line-height:1.65}
+.help{text-align:center;background:linear-gradient(135deg,#dff1facc,#f9e1e8cc)}.wa{display:inline-block;margin-top:15px;background:#4f8b60;color:#fff;text-decoration:none;border-radius:999px;padding:16px 22px;font:800 16px Arial}
+.gifts{display:grid;gap:11px;margin-top:23px}.gift{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:15px;border:1px solid #ad76282b;border-radius:19px;background:#fffdfa}.circle{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:25px;background:linear-gradient(135deg,var(--blue),var(--pink))}.gift h3{margin:0;font-size:17px}.gift p{margin:4px 0;color:var(--muted);font-size:13px}.gift small{color:#4f8b60;font:700 12px Arial}.gift button,.copy{border:0;border-radius:999px;padding:13px 15px;background:linear-gradient(135deg,var(--blue),var(--pink));color:#5f4d42;font:800 13px Arial;cursor:pointer}
+.pix{margin-top:25px;padding:24px 16px;text-align:center;border-radius:23px;background:linear-gradient(135deg,#dff1fabd,#f9e1e8bd)}.pixkey{font:800 28px Arial;letter-spacing:.04em;margin:10px 0}.copy{background:#fff;border:1px solid var(--line);color:#89591c;font-size:15px}
+.intro{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:18px;background:radial-gradient(circle at 10% 10%,#dff1fa,transparent 38%),radial-gradient(circle at 90% 12%,#f9e1e8,transparent 38%),#fff8f1;transition:.5s}.intro.hide{opacity:0;visibility:hidden;transform:scale(1.03)}.introbox{width:min(100%,440px);text-align:center;background:#fffffff0;border:1px solid var(--line);border-radius:30px;padding:38px 25px;box-shadow:var(--shadow)}.intro h1{color:#9a6520;font-size:44px;font-weight:500;margin:9px 0}.enter{border:0;border-radius:999px;padding:17px 27px;background:linear-gradient(135deg,#ad7628,#d3a65f);color:#fff;font:800 17px Arial;cursor:pointer}
+.modal{position:fixed;inset:0;z-index:60;display:none;place-items:center;padding:18px;background:#231d188c}.modal.show{display:grid}.modalbox{width:min(100%,420px);background:#fff;border-radius:25px;padding:25px;text-align:center}.modalbox h3{color:#89591c;font-size:24px}.modalbox button{width:100%;margin-top:9px;border:0;border-radius:999px;padding:14px;font:800 15px Arial}.yes{background:#4f8b60;color:#fff}.no{background:#eee5dc;color:#66564c}
+.reveal{opacity:0;transform:translateY(17px);transition:.6s}.reveal.visible{opacity:1;transform:none}footer{text-align:center;color:var(--muted);font-style:italic;padding:25px 10px}
+@media(max-width:620px){.actions{grid-template-columns:1fr}.action{min-height:78px}.gift{grid-template-columns:48px 1fr}.gift button{grid-column:2;justify-self:start;font-size:14px}.card{padding:25px 16px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.reveal{opacity:1;transform:none}}
+</style></head><body class="lock">
+<div class="intro" id="intro"><div class="introbox"><div style="font-size:52px">🧸</div><div class="kicker">Você é nosso convidado</div><h1>Chá Revelação</h1><p>01 de agosto de 2026<br>Um momento muito especial para nossa família.</p><button class="enter" onclick="enter()">Abrir o convite</button></div></div>
+<main class="wrap"><section class="hero reveal"><img src="convite.png" alt="Convite do Chá Revelação"></section>
+<nav class="actions reveal">
+<a class="action" href="https://maps.app.goo.gl/vmqSJTyVW9QeY3hr6" target="_blank"><span class="ico">📍</span><span><b>Como chegar</b><small>Abrir no Google Maps</small></span></a>
+<a class="action" href="https://wa.me/5586998474847?text=Ol%C3%A1%21%20Confirmo%20minha%20presen%C3%A7a%20no%20Ch%C3%A1%20Revela%C3%A7%C3%A3o%20do%20dia%2001%20de%20agosto%20de%202026.%0A%0ANome%3A" target="_blank"><span class="ico">✅</span><span><b>Confirmar presença</b><small>Mensagem pronta no WhatsApp</small></span></a>
+<a class="action" href="#presentes"><span class="ico">🎁</span><span><b>Escolher presente</b><small>Ver e reservar uma opção</small></span></a>
+<a class="action" href="#pix"><span class="ico">💝</span><span><b>Presentear via Pix</b><small>Copiar a chave rapidamente</small></span></a>
+</nav>
+<section class="card help reveal"><div class="kicker">Para todos os convidados</div><h2>Precisa de ajuda?</h2><p class="lead">Se tiver dificuldade para escolher ou reservar um presente, toque abaixo. O WhatsApp abrirá com a mensagem pronta.</p><a class="wa" href="https://wa.me/5586998474847?text=Ol%C3%A1%21%20Preciso%20de%20ajuda%20com%20a%20lista%20de%20presentes%20do%20Ch%C3%A1%20Revela%C3%A7%C3%A3o." target="_blank">Falar conosco no WhatsApp</a></section>
+<section class="card reveal" id="presentes"><div class="kicker">Com carinho</div><h2>Sugestões de presentes</h2><p class="lead">Escolha uma opção e toque em <b>“Reservar este presente”</b>. Confirmaremos pelo WhatsApp se ela ainda está disponível.</p><div class="gifts"><article class="gift reveal"><div class="circle">👕</div><div><h3>Roupinhas em cores neutras</h3><p>Tamanhos RN ao G</p><small>Disponível para consulta</small></div><button onclick="ask('Roupinhas em cores neutras')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🍼</div><div><h3>Mamadeira Avent 125 ml</h3><p>Modelo anticólica</p><small>Disponível para consulta</small></div><button onclick="ask('Mamadeira Avent 125 ml')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🍼</div><div><h3>Mamadeira Avent 260 ml</h3><p>Modelo anticólica</p><small>Disponível para consulta</small></div><button onclick="ask('Mamadeira Avent 260 ml')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">👜</div><div><h3>Bolsa maternidade</h3><p>Preferência por cor neutra</p><small>Disponível para consulta</small></div><button onclick="ask('Bolsa maternidade')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🛁</div><div><h3>Banheira pequena para bebê</h3><small>Disponível para consulta</small></div><button onclick="ask('Banheira pequena para bebê')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🧴</div><div><h3>Kit higiene</h3><small>Disponível para consulta</small></div><button onclick="ask('Kit higiene')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🧺</div><div><h3>Toalha com capuz</h3><p>Branca, bege, cinza ou verde</p><small>Disponível para consulta</small></div><button onclick="ask('Toalha com capuz')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🧸</div><div><h3>Manta</h3><p>Preferência por cor neutra</p><small>Disponível para consulta</small></div><button onclick="ask('Manta')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🤱</div><div><h3>Almofada de amamentação</h3><small>Disponível para consulta</small></div><button onclick="ask('Almofada de amamentação')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🛏️</div><div><h3>Kit Ninho Redutor + Almofada de Amamentação + Mosquiteiro</h3><small>Disponível para consulta</small></div><button onclick="ask('Kit Ninho Redutor + Almofada de Amamentação + Mosquiteiro')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🌡️</div><div><h3>Termômetro digital</h3><small>Disponível para consulta</small></div><button onclick="ask('Termômetro digital')">Reservar este presente</button></article><article class="gift reveal"><div class="circle">🍼</div><div><h3>Bomba tira-leite Avent</h3><small>Disponível para consulta</small></div><button onclick="ask('Bomba tira-leite Avent')">Reservar este presente</button></article></div>
+<div class="pix" id="pix"><div class="kicker">Outra forma de presentear</div><h3>Presente via Pix</h3><div class="pixkey" id="pixkey">86998474847</div><button class="copy" onclick="copyPix()">Copiar chave Pix</button><p class="lead" style="font-size:14px">A sua presença é o nosso maior presente.</p></div></section>
+<footer>Esperamos você para celebrar conosco este momento tão especial. 💙🩷</footer></main>
+<div class="modal" id="modal"><div class="modalbox"><div style="font-size:42px">🎁</div><h3>Reservar este presente?</h3><p id="modaltext"></p><button class="yes" onclick="go()">Sim, abrir o WhatsApp</button><button class="no" onclick="closeM()">Voltar</button></div></div>
+<script>
+let chosen="";
+function enter(){document.getElementById('intro').classList.add('hide');document.body.classList.remove('lock');setTimeout(()=>document.getElementById('intro').remove(),550)}
+function ask(item){chosen=item;document.getElementById('modaltext').textContent='Você escolheu: '+item+'. Vamos abrir uma mensagem pronta para confirmar se ainda está disponível.';document.getElementById('modal').classList.add('show')}
+function closeM(){document.getElementById('modal').classList.remove('show')}
+function go(){const m=`Olá! Tudo bem?
 
 Gostaria de reservar o seguinte presente para o Chá Revelação:
 
-🎁 ${item}
+🎁 ${chosen}
 
-Ele ainda está disponível?`;
-      window.open(`https://wa.me/5586998474847?text=${encodeURIComponent(message)}`,'_blank');
-    }
-    async function copyPix(){
-      const key=document.getElementById('pix').textContent.trim();
-      try{await navigator.clipboard.writeText(key);showToast('Chave Pix copiada.');}
-      catch(e){showToast('Chave Pix: '+key);}
-    }
-  </script>
-</body>
-</html>
+Ele ainda está disponível?`;window.open(`https://wa.me/5586998474847?text=${encodeURIComponent(m)}`,'_blank');closeM()}
+async function copyPix(){try{await navigator.clipboard.writeText('86998474847');alert('Chave Pix copiada.')}catch(e){alert('Chave Pix: 86998474847')}}
+const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});document.querySelectorAll('.reveal').forEach(e=>ob.observe(e));
+</script></body></html>
